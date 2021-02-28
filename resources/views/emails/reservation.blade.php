@@ -4,7 +4,7 @@
 
     <header class="header">
         <div class="header__logo-box">
-            <img src="/img/logo-Roc.png" alt="Logo" class="header__logo">
+            <img src="http://rushourcoach.herokuapp.com/img/logo-Roc.png" alt="Logo" class="header__logo">
         </div>
 
         <div class="header__text-box">
@@ -13,7 +13,7 @@
                 <span class="heading-primary--sub">Plateforme de mise en relation avec des coachs sportifs</span>
             </h1>
 
-            <a href="/categories" style="margin-top: 5rem;" class="btn btn--white btn--animated">Nos catégories</a>
+            <a href="http://rushourcoach.herokuapp.com/categories" style="margin-top: 5rem;" class="btn btn--white btn--animated">Nos catégories</a>
         </div>
     </header>
     <main>
@@ -31,7 +31,7 @@
                         Date : {{ $date_select }} à {{ $hour_select }}
                     </p>
                     <p class="paragraph">
-                        Annulation : <a href="http://127.0.0.1:8000/reservation/annulation/{{$token}}">Annuler votre rendez-vous</a>
+                        Annulation : <a href="http://rushourcoach.herokuapp.com/reservation/annulation/{{$token}}">Annuler votre rendez-vous</a>
                     </p>
                 </div>
             </div>
