@@ -7,6 +7,7 @@ use App\Mail\ReservationMail;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 class ReservationController extends Controller
 {
@@ -14,13 +15,52 @@ class ReservationController extends Controller
     {
         $token = md5(uniqid(true));
 
-        $today = \Carbon\Carbon::now()->format('Y-m-d');
+        $today = Carbon::now()->format('Y-m-d');
 
         return view('reservation', compact('today'), ['token' => $token]);
     }
 
     public function sendReservation(ReservationFormRequest $request)
     {
+        $allReservations = DB::table('reservations')->get();
+
+        $allDays = Carbon::getDays();
+        $openDays = Config::get('configuration.openDays');
+
+        //Verification is days off
+
+        $date_select_verif = $request->get('date_select');
+        $dateIsExist = DB::table('reservations')->where('date_select', '=', $date_select_verif)->get();
+
+        $parseDateIsDaysOff = Carbon::parse($date_select_verif);
+
+        if($parseDateIsDaysOff->isSaturday() || $parseDateIsDaysOff->isSunday()){
+            return redirect('/reservation')
+                ->with('error',"Le coach n'est pas disponible le vendredi et le samedi !");
+        }
+
+        // end of verification is days off
+
+        //Verification is 2 reservations for this user
+
+        $email_select_verif = $request->get('email');
+        $hour_select_verif = $request->get('hour_select');
+        $date_select_verif = $request->get('date_select');
+
+        $userIsExist= DB::table('reservations')->where([
+
+            ['email', '=', $email_select_verif],
+            ['hour_select', '=', $hour_select_verif],
+            ['date_select', '=', $date_select_verif]
+
+        ])->get();
+
+        if (count($userIsExist) > 0) {
+            return redirect('/reservation')
+                ->with('error',"Vous avez déjà réservé le ".$date_select_verif." à ".$hour_select_verif." !");
+        }
+
+        // end of is 2 reservations for this user
 
         $params = [
             'date_select' => $request->get('date_select'),

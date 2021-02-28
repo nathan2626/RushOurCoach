@@ -25,6 +25,12 @@
                         @endforeach
                     @endif
 
+                    @if (session('error'))
+                        <div class="notification isBadNotification u-margin-bottom-medium">
+                            <p>{{ session('error') }}</p>
+                        </div>
+                    @endif
+
                     @if (session('status'))
                         <div class="notification isGoodNotification u-margin-bottom-medium">
                             <p>{{ session('status') }}</p>

@@ -10,18 +10,28 @@ use Illuminate\Support\Facades\Mail;
 
 class AnnulationController extends Controller
 {
-
     public function index($token)
     {
-        $annulationRecap = DB::table('reservations')->where('token', '=',  $token)->get();
 
-//        DB::table('reservations')->where('token', '=',  $token)->delete();
+        //Verification token Exist
+
+        $verifTokenIsExist = DB::table('reservations')->where('token', '=',  $token)->get('token');
+
+//        dd(count($verifTokenIsExist));
+        if (count($verifTokenIsExist) < 1){
+            return redirect('/reservation')
+                ->with('error',"Vous avez déjà annulé cette réservation ou la réservation n'existe pas !");
+        }
+
+        // end of verification token Exist
+
+        $annulationRecap = DB::table('reservations')->where('token', '=',  $token)->get();
 
         return view('annulation', compact('token'), ['annulationRecap' => $annulationRecap]);
     }
     public function delete($token)
     {
-//        DB::table('reservations')->where('token', '=',  $token)->get();
+
 
         DB::table('reservations')->where('token', '=',  $token)->delete();
 

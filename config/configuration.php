@@ -1,7 +1,16 @@
 <?php
 
 return [
-    'days'=> 'Du dimanche au jeudi',
+    'days'=> 'Du Lundi au vendredi',
+    'openDays'=> [
+        0 => "Sunday",
+        1 => "Monday",
+        2 => "Tuesday",
+        3 => "Wednesday",
+        4 => "Thursday",
+        5 => "Friday",
+        6 => "Saturday"
+    ],
     'hours'=> 'De 9h à 18h',
     'name'=> 'Harry Smith',
     'from'=> 'Paris',
