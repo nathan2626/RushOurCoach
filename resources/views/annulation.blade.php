@@ -19,6 +19,19 @@
             </div>
             <div class="col-1-of-3">
                 <div class="card">
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div class="notification isBadNotification u-margin-bottom-medium">
+                                <p>{{ $error }}</p>
+                            </div>
+                        @endforeach
+                    @endif
+
+                    @if (session('error'))
+                        <div class="notification isBadNotification u-margin-bottom-medium">
+                            <p>{{ session('error') }}</p>
+                        </div>
+                    @endif
                     <div class="card__side card__side--front">
                         <div class="card__picture" style=" background-image: url(/img/bg-price-1.jpg);">
                             &nbsp;
@@ -47,6 +60,12 @@
                                     <input type="hidden" name="token" value="{{ $token }}">
                                 @endif
 
+                                <div class="form__group">
+                                    <input class="form__input" type="checkbox" checked id="cgu" name="cgu" required>
+                                    <label class="form__label" for="cgu">
+                                        J'ai lu et accepté les <a href="#">conditions d'utilisation</a>
+                                    </label>
+                                </div>
                                 <button type="submit" class="btn btn--white">Annuler !</button>
                             </form>
                         </div>

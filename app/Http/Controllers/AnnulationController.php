@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AnnulationFormRequest;
 use App\Mail\AnnulationMail;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
@@ -29,9 +30,10 @@ class AnnulationController extends Controller
 
         return view('annulation', compact('token'), ['annulationRecap' => $annulationRecap]);
     }
-    public function delete($token)
+    public function delete(AnnulationFormRequest $request, $token)
     {
 
+//        if ()
 
         DB::table('reservations')->where('token', '=',  $token)->delete();
 
