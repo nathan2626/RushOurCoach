@@ -62,6 +62,21 @@ class ReservationController extends Controller
 
         // end of is 2 reservations for this user
 
+        //Verification is max 2 reservations
+
+        $reserveTwoMax = DB::table('reservations')->where([
+            ['hour_select', '=', $hour_select_verif],
+            ['date_select', '=', $date_select_verif]
+
+        ])->get();
+
+        if (count($reserveTwoMax) >= 2) {
+            return redirect('/reservation')
+                ->with('error',"Plus de place disponible le ".$date_select_verif." à ".$hour_select_verif." !");
+        }
+
+        // end of is max 2 reservations
+
         $params = [
             'date_select' => $request->get('date_select'),
             'hour_select' => $request->get('hour_select'),
