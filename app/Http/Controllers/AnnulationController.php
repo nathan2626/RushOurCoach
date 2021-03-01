@@ -21,7 +21,7 @@ class AnnulationController extends Controller
 //        dd(count($verifTokenIsExist));
         if (count($verifTokenIsExist) < 1){
             return redirect('/reservation')
-                ->with('error',"Vous avez déjà annulé cette réservation ou la réservation n'existe pas !");
+                ->with('error',"Vous avez déjà annulé cette réservation ou la réservation n'existe pas !")->withInput();
         }
 
         // end of verification token Exist

@@ -36,7 +36,7 @@ class ReservationController extends Controller
 
         if($parseDateIsDaysOff->isSaturday() || $parseDateIsDaysOff->isSunday()){
             return redirect('/reservation')
-                ->with('error',"Le coach n'est pas disponible le vendredi et le samedi !");
+                ->with('error',"Le coach n'est pas disponible le vendredi et le samedi !")->withInput();
         }
 
         // end of verification is days off
@@ -57,7 +57,7 @@ class ReservationController extends Controller
 
         if (count($userIsExist) > 0) {
             return redirect('/reservation')
-                ->with('error',"Vous avez déjà réservé le ".$date_select_verif." à ".$hour_select_verif." !");
+                ->with('error',"Vous avez déjà réservé le ".$date_select_verif." à ".$hour_select_verif." !")->withInput();
         }
 
         // end of is 2 reservations for this user
@@ -72,7 +72,7 @@ class ReservationController extends Controller
 
         if (count($reserveTwoMax) >= 2) {
             return redirect('/reservation')
-                ->with('error',"Plus de place disponible le ".$date_select_verif." à ".$hour_select_verif." !");
+                ->with('error',"Plus de place disponible le ".$date_select_verif." à ".$hour_select_verif." !")->withInput();
         }
 
         // end of is max 2 reservations
