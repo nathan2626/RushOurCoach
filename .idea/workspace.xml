@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f3ad65d8-9483-4256-b07b-82c3c8285cc6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnnulationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnnulationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,6 +148,9 @@
       <recent name="C:\Users\natha\OneDrive\Bureau\Cours-Webstart\2eme année\back\laravel\RushOurCoach\public" />
       <recent name="C:\Users\natha\OneDrive\Bureau\Cours-Webstart\2eme année\back\laravel\RushOurCoach\resources" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\natha\OneDrive\Bureau\Cours-Webstart\2eme année\back\laravel\RushOurCoach\app\Http\Controllers\Api" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -171,7 +173,8 @@
       <workItem from="1614249233681" duration="15918000" />
       <workItem from="1614329726760" duration="5023000" />
       <workItem from="1614506569584" duration="10383000" />
-      <workItem from="1614607741520" duration="82000" />
+      <workItem from="1614607741520" duration="711000" />
+      <workItem from="1614691004860" duration="6718000" />
     </task>
     <servers />
   </component>

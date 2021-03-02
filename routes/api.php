@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+//Route::middleware('auth:api')->get('/user', function (Request $request) {
+//    return $request->user();
+//});
+
+Route::get('/informations', [App\Http\Controllers\Api\InformationsController::class, 'get'])->name('getInformations');
+
+Route::post('/reservation', [App\Http\Controllers\Api\ReservationController::class, 'book'])->name('book');
+
+Route::post('/reservation/annulation/{token}', [App\Http\Controllers\Api\ReservationController::class, 'cancel'])->name('cancel');
+
