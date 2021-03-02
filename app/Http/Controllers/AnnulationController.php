@@ -47,6 +47,7 @@ class AnnulationController extends Controller
         Mail::to(Config::get('reservation.email'))->send(new AnnulationMail($params));
 
         return redirect('reservation')
-            ->with('status', 'Votre annulation a bien été réalisée !');    }
+            ->with('status', 'Votre annulation a bien été réalisée !');
+    }
 
 }
