@@ -70,6 +70,7 @@ class ReservationController extends Controller
         $email_select_verif = $request->get('email');
         $hour_select_verif = $request->get('hour_select');
         $date_select_verif = $request->get('date_select');
+        $token_select = $request->get('token');
 
         $userIsExist= DB::table('reservations')->where([
 
@@ -126,7 +127,7 @@ class ReservationController extends Controller
 
 //        return response('/api/reservation')
 //            ->with('status', 'Votre réservation a bien été enregistrée, un mail vous sera envoyé !');
-        return response()->json(['status' => "Votre réservation a bien été enregistrée, un mail vous sera envoyé !"], 201);
+        return response()->json(['status' => "Votre réservation a bien été enregistrée, un mail vous sera envoyé !", 'token'=> $token_select ], 201);
 
 
     }
