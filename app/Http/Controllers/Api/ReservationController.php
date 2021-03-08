@@ -127,7 +127,7 @@ class ReservationController extends Controller
 
 //        return response('/api/reservation')
 //            ->with('status', 'Votre réservation a bien été enregistrée, un mail vous sera envoyé !');
-        return response()->json(['status' => "Votre réservation a bien été enregistrée, un mail vous sera envoyé !", 'token'=> $token_select ], 201);
+        return response()->json(['status' => "Votre réservation a bien été enregistrée, un mail vous sera envoyé !", 'token'=> $token_select, 'hour' => $hour_select_verif, 'date'=> $date_select_verif  ], 201);
 
 
     }
