@@ -36,7 +36,7 @@ class ReservationController extends Controller
 
         if($parseDateIsDaysOff->isSaturday() || $parseDateIsDaysOff->isSunday()){
             return redirect('/reservation')
-                ->with('error',"Le coach n'est pas disponible le vendredi et le samedi !")->withInput();
+                ->with('error',"Le coach n'est pas disponible du vendredi au dimanche !")->withInput();
         }
 
         // end of verification is days off
@@ -76,6 +76,20 @@ class ReservationController extends Controller
         }
 
         // end of is max 2 reservations
+
+        //Verification is min date
+
+        $today = Carbon::now()->format('Y-m-d');
+        $selectForVerif =  $request->get('date_select');
+
+        if($selectForVerif < $today){
+            return redirect('/reservation')
+                ->with('error',"La date sélectionnée est passée..")->withInput();
+        }
+
+        // end of is min date
+
+
 
         $params = [
             'date_select' => $request->get('date_select'),

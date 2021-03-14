@@ -108,6 +108,17 @@ class ReservationController extends Controller
 
         // end of is max 2 reservations
 
+        //Verification is min date
+
+        $today = Carbon::now()->format('Y-m-d');
+        $selectForVerif =  $request->get('date_select');
+
+        if($selectForVerif < $today){
+            return response()->json(['error' => "La date sélectionnée est passée.."], 400);
+        }
+
+        // end of is min date
+
         $params = [
             'date_select' => $request->get('date_select'),
             'hour_select' => $request->get('hour_select'),
